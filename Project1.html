@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+color: blue;
+    margin-top: 75px;
+    text-align: center;
+    font-size: 60px;
+	text-shadow:3px 1px 2px black;
+}
+.p1 {
+    color: blue;
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+}
+.div2 {
+    background-color: #F5FEFD;
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+}
+.div3 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+}
+
+.text-container {
+    max-width: 50%; 
+    margin-right: 20px;
+ }
+ 
+.p2 {
+   
+    font-size: 45px;
+    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
+	text-shadow: 3px 1px 2px black;
+    }
+	
+.p3 {font-size: 22px;
+     font-weight: bold;}
+
+.scheduel{
+width: 15%;
+border-width:3px;
+border-style: solid;
+border-color: skyblue;
+border-radius: 15px;
+font-size: 22px;
+text-align: center;
+background-color: skyblue;
+font-weight: bold;
+padding: 7px;
+margin-top: 100px;
+}
+
+.cv{
+width: 18%;
+border-width:3px;
+border-style: solid;
+border-color: skyblue;
+border-radius: 15px;
+font-size: 22px;
+text-align: center;
+background-color: skyblue;
+font-weight: bold;
+padding: 7px;
+margin-top: 100px;
+margin-left: 13cm;
+}
+img {
+    width: 500px;
+    height: auto;
+	}
+	
+.imgconc{
+height: 100px;
+width: 50px;
+}
+	nav a {
+	text-decoration: none;
+	}
+	
+	@media (max-width: 991px) {
+    h1 {
+        font-size: 45px;
+    }
+
+    .p1 {
+        font-size: 26px;
+    }
+
+    .p2 {
+        font-size: 35px;
+    }
+
+    .p3 {
+        font-size: 18px;
+    }
+
+    .scheduel, .cv {
+        width: 30%;
+        font-size: 18px;
+        margin-top: 60px;
+    }
+
+    .cv {
+        margin-left: 5cm;
+    }
+
+    img {
+        width: 350px;
+    }
+
+    .text-container {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 30px;
+        margin-top: 40px;
+    }
+
+    .p1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .p2 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .p3 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .div2, .div3 {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .text-container {
+        max-width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .scheduel, .cv {
+        width: 80%;
+        font-size: 18px;
+        margin: 20px auto;
+    }
+
+    .cv {
+        margin-left: 0;
+    }
+
+    img {
+        width: 90%;
+        height: auto;
+    }
+
+    .imgconc {
+        width: 30px;
+        height: auto;
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<div>
+    <h1>Hello I am Pedro Andary </h1><br>
+    <p class="p1">I am a first-year IT student at the Holy Spirit University of Kaslik</p>
+</div><br>
+
+
+<!-- Scheduel Section-->
+<div class="div2">
+    <div class="text-container">
+        <p class="p2"><Font color=#007FFF>If you want to know my uni schedule,<br>press the button below</Font></p>
+        <p class="p3">This schedule contains all my classes in the Spring 2025 Semester</p>
+		<nav>
+	    <p class="scheduel"><a href="C:\Web Programming\Scheduel-project.html" Target=_blank >Schedule</a></p>
+	    </nav>
+		
+    </div>
+    <img src="uni_sch_transparent.png">
+	</div>
+	
+	
+	<!-- Cv Section-->
+<div class="div3">
+  <div>
+	<p class="p2" align=right><Font color=#007FFF> Want to know more about me ?</Font></p> 
+	<p class="p3" align=right> Click here to check out my CV</p><br>
+	<nav>
+	<p class="cv" ><a href="C:\Web Programming\CV.html" Target=_blank > About Me</a></p>
+	</nav>
+  </div>
+	<img src="resume-pic.png" >
+</div>
+
+
+<!-- Contact Us Section-->
+<div class="div2">
+    <div class="text-container">
+        <p class="p2"><Font color=#007FFF>If you would like to get in touch with me, please fill out the Contact Us form below</Font></p>
+        <p class="p3">This form will help me respond to your message quickly and accurately.</p>
+		<nav>
+	    <p class="scheduel"><a href="Contact-Us.html" Target=_blank >Contact Us</a></p>
+	    </nav>
+		
+    </div>
+    <img src="contact us.png">
+	</div>
+	<!-- Quiz Section-->
+	<div class="div3">
+  <div>
+	<p class="p2" align=right><Font color=#007FFF> Think your smart enough ?</Font></p> 
+	<p class="p3" align=right> Try and answer these 10 general knowledge questions correctly.</p><br>
+	<nav>
+	<p class="cv" ><a href="C:\Web Programming\Quiz.html" Target=_blank > Quiz Me</a></p>
+	</nav>
+  </div>
+	<img src="quiz time.jpg" >
+</div>
+
+<!-- Contact Me Section -->
+<div style="display: flex; justify-content: space-between; margin-top: 20px;">
+
+
+  <!--  Phone -->
+  <div style="width: 30%; text-align: left;">
+    <h3>Contact Me (Phone)</h3>
+    <p>If you have any questions, feel free to contact me via phone at:<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	+961 12 345 678</p>
+  </div>
+
+
+  <!--  Email -->
+  <div style="width: 30%; text-align: center;">
+    <h3>Contact Me (Email)</h3>
+    <p>If you have any questions, feel free to contact me via email at: pedro.c.alandary.net.usek.edu.lb</p>
+  </div>
+
+
+  <!--  Instagram -->
+  <div style="width: 30%; text-align: right;">
+    <h3>Contact Me (Instagram)</h3>
+    <p>If you have any questions, feel free to contact me via Instagram: pedroandary&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	</p>
+  </div>
+</div><br><br><br>
+
+
+
+
+</body>
+</html>

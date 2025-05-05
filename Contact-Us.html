@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+   body {
+   margin:0 auto;
+   max-width: 1000px;
+   }
+   h1 {
+   text-align: center;
+   }
+   .label1 {
+   margin-top: 20px;
+   margin-left: 40px;
+   font-size: 22px;
+   }
+
+   .finput {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+   margin: 10px;
+   width: 400px;
+   height: 18px;
+   }
+   .sbmt {
+   display: flex;
+   margin-top: 100px;
+   margin-left: 40px;
+   height: 30px;
+   font-size: 22px;
+   }
+   .clr {
+   display: flex;
+   margin-top: -30px;
+   margin-left: 700px;
+   height: 30px;
+   font-size: 22px;
+   }
+   #error {
+   color: red;
+   margin-left: 40px;
+   font-size: 18px;
+   }
+
+   #thankyouMessage {
+   margin-top: 20px;
+   font-size: 24px;
+   color: green;
+   text-align: center;
+   }
+
+   @media only screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .label1 {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+
+    .finput {
+        flex-direction: column;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    textarea {
+        width: 100% !important;
+    }
+
+    .sbmt, .clr {
+        margin-left: 10px;
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .clr {
+        margin-top: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+function validateForm() {
+    var name = document.forms["myForm"]["name"].value.trim();
+    var phone = document.forms["myForm"]["Phone"].value.trim();
+    var email = document.forms["myForm"]["Email"].value.trim();
+    var contactMethod = document.forms["myForm"]["conmet"].value;
+    var errorDiv = document.getElementById("error");
+
+    let errorMsg = "";
+    let methodUsed = "";
+    let contactInfo = "";
+
+    if (name === "") {
+        errorMsg += "Name must be filled out.<br>";
+    }
+
+    if (contactMethod === "Phone") {
+        if (phone === "") {
+            errorMsg += "Phone number is required as contact method is Phone.<br>";
+        } else {
+            methodUsed = "Phone";
+            contactInfo = phone;
+        }
+    }
+
+    if (contactMethod === "Email") {
+        if (email === "") {
+            errorMsg += "Email is required as contact method is Email.<br>";
+        } else {
+            methodUsed = "Email";
+            contactInfo = email;
+        }
+    }
+
+    if (contactMethod === "Any") {
+        if (phone === "" && email === "") {
+            errorMsg += "Please provide at least Phone or Email for 'Any' contact method.<br>";
+        } else if (phone !== "" && email !== "") {
+            methodUsed = "Phone or Email";
+            contactInfo = `${phone} or ${email}`;
+        } else if (phone !== "") {
+            methodUsed = "Phone";
+            contactInfo = phone;
+        } else {
+            methodUsed = "Email";
+            contactInfo = email;
+        }
+    }
+
+    if (errorMsg) {
+        errorDiv.innerHTML = errorMsg;
+        return false;
+    }
+
+    // Display the Thank You message
+    var thankYouMessage = document.getElementById("thankyouMessage");
+    thankYouMessage.innerHTML = "Thank you for your submission, " + name + "! We will contact you via " + methodUsed + " (" + contactInfo + ").";
+
+    // Hide the form after submission
+    document.forms["myForm"].reset();
+    return false;
+}
+</script>
+
+<h1><Font size="20">Please Fill the Information Below</Font></h1>
+
+<form name="myForm" onsubmit="return validateForm();">
+
+<fieldset style="border-width:5px;"><legend style="font-size: 24px;">Contact Us form</legend>
+
+<div class="label1">
+<label> Name: &nbsp &nbsp &nbsp &nbsp &nbsp<input type="text" name="name" class="finput">
+</div>
+
+<div class="label1">
+<label>Email:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="Email" name="Email" class="finput">
+</div>
+
+<div class="label1">
+<label>Phone Number: &nbsp &nbsp<input type="text" name="Phone" class="finput">
+</div>
+
+<div class="label1">
+<label>Date of Birth: &nbsp<input type="date" name="Date" class="finput">
+</div>
+
+<div class="label1">
+<label>Enter your address:</label><br>
+<textarea name="add" style="width: 400px; height: 150px; resize: none;" maxlength=100 class="finput"> </textarea><br>
+</div>
+
+<div class="label1">
+Select your gender: <input type="radio" name="gender" value="male" checked>Male
+<input type="radio" name="gender" value="female">Female<br><br>
+</div>
+
+<div class="label1">
+Preferred contact method: <input type="radio" name="conmet" value="Phone" checked>Phone
+<input type="radio" name="conmet" value="Email">Email
+<input type="radio" name="conmet" value="Any">Any
+</div>
+
+<div id="error"></div>
+
+<div class="sbmt">
+<INPUT type="SUBMIT" value="SUBMIT">
+</div>
+
+<div class="clr">
+<INPUT type="RESET" value="CLEAR">
+</div>
+
+</fieldset>
+</form>
+<br><br><br>
+<!-- Thank You message will be displayed here -->
+<div id="thankyouMessage"></div><br><br><br><br>
+
+</body>
+</html>

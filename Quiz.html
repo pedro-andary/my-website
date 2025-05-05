@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: lightblue;
+      font-family: Arial, sans-serif;
+    }
+    p {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .loginName, .quiz, .result {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .in {
+      width: 300px;
+      height: 30px;
+      font-size: 18px;
+    }
+    .butn {
+      width: 140px;
+      height: 40px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .opt {
+      font-size: 20px;
+      border: 2px solid #333;
+      padding: 10px;
+      text-align: left;
+      margin: 10px auto;
+      width: 80%;
+    }
+    .opt label {
+      display: block;
+      margin: 5px 0;
+    }
+    
+    /* Media Queries */
+    @media (max-width: 768px) {
+      body {
+        max-width: 100%;
+        padding: 10px;
+      }
+      .in {
+        width: 90%;
+      }
+      .butn {
+        width: 100%;
+      }
+      .opt {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      p {
+        font-size: 24px;
+      }
+      .butn {
+        font-size: 16px;
+        height: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Login Section -->
+<div id="loginSection" class="loginName">
+  <p>Please Enter Your Name</p>
+  <input type="text" id="userNameInput" class="in" placeholder="Your name here"><br>
+  <button class="butn" onclick="startQuiz()">Begin Quiz</button>
+</div>
+
+<!-- Quiz Section -->
+<form id="quizForm" class="quiz" style="display:none;" onsubmit="return checkAnswers();">
+  <p id="greeting"></p>
+
+  <p>1. What is the capital of Canada?</p>
+  <div class="opt">
+    <label><input type="radio" name="q1" value="a">Toronto</label>
+    <label><input type="radio" name="q1" value="b">Vancouver</label>
+    <label><input type="radio" name="q1" value="c">Ottawa</label>
+    <label><input type="radio" name="q1" value="d">Montreal</label>
+  </div>
+
+  <p>2. In which year did the Titanic sink?</p>
+  <div class="opt">
+    <label><input type="radio" name="q2" value="a">1914</label>
+    <label><input type="radio" name="q2" value="b">1910</label>
+    <label><input type="radio" name="q2" value="c">1912</label>
+    <label><input type="radio" name="q2" value="d">1921</label>
+  </div>
+
+  <p>3. What is the largest desert in the world?</p>
+  <div class="opt">
+    <label><input type="radio" name="q3" value="a">Sahara Desert</label>
+    <label><input type="radio" name="q3" value="b">Gobi Desert</label>
+    <label><input type="radio" name="q3" value="c">Arabian Desert</label>
+    <label><input type="radio" name="q3" value="d">Antarctic Desert</label>
+  </div>
+
+  <p>4. What is the currency of Japan?</p>
+  <div class="opt">
+    <label><input type="radio" name="q4" value="a">Won</label>
+    <label><input type="radio" name="q4" value="b">Yen</label>
+    <label><input type="radio" name="q4" value="c">Yuan</label>
+    <label><input type="radio" name="q4" value="d">Ringgit</label>
+  </div>
+
+  <p>5. How many teeth does an average adult human have?</p>
+  <div class="opt">
+    <label><input type="radio" name="q5" value="a">28</label>
+    <label><input type="radio" name="q5" value="b">30</label>
+    <label><input type="radio" name="q5" value="c">36</label>
+    <label><input type="radio" name="q5" value="d">32</label>
+  </div>
+
+  <p>6. How many bones are in a human body?</p>
+  <div class="opt">
+    <label><input type="radio" name="q6" value="a">206</label>
+    <label><input type="radio" name="q6" value="b">216</label>
+    <label><input type="radio" name="q6" value="c">208</label>
+    <label><input type="radio" name="q6" value="d">202</label>
+  </div>
+
+  <p>7. What language is spoken in Brazil?</p>
+  <div class="opt">
+    <label><input type="radio" name="q7" value="a">Spanish</label>
+    <label><input type="radio" name="q7" value="b">French</label>
+    <label><input type="radio" name="q7" value="c">Portuguese</label>
+    <label><input type="radio" name="q7" value="d">English</label>
+  </div>
+
+  <p>8. What is the hardest natural substance on Earth?</p>
+  <div class="opt">
+    <label><input type="radio" name="q8" value="a">Iron</label>
+    <label><input type="radio" name="q8" value="b">Tungsten</label>
+    <label><input type="radio" name="q8" value="c">Diamond</label>
+    <label><input type="radio" name="q8" value="d">Lead</label>
+  </div>
+
+  <p>9. What year did World War 2 end?</p>
+  <div class="opt">
+    <label><input type="radio" name="q9" value="a">1945</label>
+    <label><input type="radio" name="q9" value="b">1946</label>
+    <label><input type="radio" name="q9" value="c">1932</label>
+    <label><input type="radio" name="q9" value="d">1949</label>
+  </div>
+
+  <p>10. How many hearts does an octopus have?</p>
+  <div class="opt">
+    <label><input type="radio" name="q10" value="a">1</label>
+    <label><input type="radio" name="q10" value="b">3</label>
+    <label><input type="radio" name="q10" value="c">4</label>
+    <label><input type="radio" name="q10" value="d">2</label>
+  </div>
+
+  <br>
+  <input type="submit" value="Submit Answers" class="butn">
+</form>
+
+<!-- Result Section -->
+<div id="result" class="result"></div>
+
+<script>
+let userName = "";
+
+function startQuiz() {
+  const input = document.getElementById("userNameInput").value.trim();
+  if (input === "") {
+    alert("Name can't be blank");
+    return;
+  }
+
+  userName = input;
+  document.getElementById("loginSection").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+  document.getElementById("greeting").innerText = "Welcome, " + userName + "!";
+}
+
+function checkAnswers() {
+  let score = 0;
+  const form = document.getElementById("quizForm");
+
+  // Check answers (add the correct answers for all questions)
+  if (form.q1.value === "c") score++;
+  if (form.q2.value === "c") score++;
+  if (form.q3.value === "d") score++;
+  if (form.q4.value === "b") score++;
+  if (form.q5.value === "d") score++;
+  if (form.q6.value === "a") score++;
+  if (form.q7.value === "c") score++;
+  if (form.q8.value === "c") score++;
+  if (form.q9.value === "a") score++;
+  if (form.q10.value === "b") score++;
+
+  let resultHTML = "<p>" + userName + ", you scored " + score + "/10.</p>";
+
+  if (score >= 5) {
+    resultHTML += "<p style='color: green;'>Congratulations! You passed.</p>";
+  } else {
+    resultHTML += "<p style='color: red;'>Sorry, you did not pass.</p>";
+  }
+
+  resultHTML += "<p><strong>Correct Answers:</strong><br>";
+  resultHTML += "1. Ottawa<br>";
+  resultHTML += "2. 1912<br>";
+  resultHTML += "3. Antarctic Desert<br>";
+  resultHTML += "4. Yen<br>";
+  resultHTML += "5. 32<br>";
+  resultHTML += "6. 206<br>";
+  resultHTML += "7. Portuguese<br>";
+  resultHTML += "8. Diamond<br>";
+  resultHTML += "9. 1945<br>";
+  resultHTML += "10. 3<br>";
+  resultHTML += "</p>";
+
+  document.getElementById("result").innerHTML = resultHTML;
+  return false;
+}
+</script>
+
+</body>
+</html>
