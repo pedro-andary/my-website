@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,7 @@
       margin: 5px 0;
     }
     
-    /* Media Queries */
+    
     @media (max-width: 768px) {
       body {
         max-width: 100%;
@@ -72,6 +72,70 @@
 </head>
 
 <body>
+
+<script>
+let userName = ""; // Initialize an empty string to store the user's name.
+
+function startQuiz() {
+  var input = document.getElementById("userNameInput").value.trim(); // Get the user input (name) and remove any leading/trailing spaces.
+  if (input === "") { // Check if the input is empty.
+    alert("Name can't be blank"); // Show an alert if the input is empty.
+    return; // Exit the function if the input is empty.
+  }
+
+  userName = input; // Store the user's name in the userName variable.
+  document.getElementById("loginSection").style.display = "none"; // Hide the login section (where the name is entered).
+  document.getElementById("quizForm").style.display = "block"; // Show the quiz form (the actual quiz).
+  document.getElementById("greeting").innerText = "Welcome, " + userName + "!"; // Display a personalized greeting with the user's name.
+}
+
+function checkAnswers() {
+  var score = 0; // Initialize a variable to store the user's score (starts at 0).
+  var form = document.getElementById("quizForm"); // Get the quiz form to access the user's answers.
+
+  // Check answers for each question, increment score for correct answers.
+  if (form.q1.value === "c") score++; 
+  if (form.q2.value === "c") score++; 
+  if (form.q3.value === "d") score++; 
+  if (form.q4.value === "b") score++; 
+  if (form.q5.value === "d") score++;
+  if (form.q6.value === "a") score++; 
+  if (form.q7.value === "c") score++; 
+  if (form.q8.value === "c") score++;
+  if (form.q9.value === "a") score++; 
+  if (form.q10.value === "b") score++; 
+
+  var resultHTML = "<p>" + userName + ", you scored " + score + "/10.</p>"; // Create a result message with the score and the user's name.
+
+  if (score >= 5) { 
+    resultHTML += "<p style='color: green;'>Congratulations! You passed.</p>"; 
+  } else {
+    resultHTML += "<p style='color: red;'>Sorry, you did not pass.</p>"; 
+  }
+
+  // Display the correct answers for all the quiz questions.
+  resultHTML += "<p><strong>Correct Answers:</strong><br>";
+  resultHTML += "1. Ottawa<br>";
+  resultHTML += "2. 1912<br>"; 
+  resultHTML += "3. Antarctic Desert<br>"; 
+  resultHTML += "4. Yen<br>"; 
+  resultHTML += "5. 32<br>"; 
+  resultHTML += "6. 206<br>"; 
+  resultHTML += "7. Portuguese<br>"; 
+  resultHTML += "8. Diamond<br>"; 
+  resultHTML += "9. 1945<br>"; 
+  resultHTML += "10. 3<br>"; 
+  resultHTML += "</p>";
+
+  document.getElementById("result").innerHTML = resultHTML; // Display the result (score, pass/fail, and correct answers) in the element with id="result".
+  return false; // Prevent the form from being submitted and page from refreshing.
+}
+
+</script>
+
+
+
+
 
 <!-- Login Section -->
 <div id="loginSection" class="loginName">
@@ -171,63 +235,7 @@
 <!-- Result Section -->
 <div id="result" class="result"></div>
 
-<script>
-let userName = "";
 
-function startQuiz() {
-  const input = document.getElementById("userNameInput").value.trim();
-  if (input === "") {
-    alert("Name can't be blank");
-    return;
-  }
-
-  userName = input;
-  document.getElementById("loginSection").style.display = "none";
-  document.getElementById("quizForm").style.display = "block";
-  document.getElementById("greeting").innerText = "Welcome, " + userName + "!";
-}
-
-function checkAnswers() {
-  let score = 0;
-  const form = document.getElementById("quizForm");
-
-  // Check answers (add the correct answers for all questions)
-  if (form.q1.value === "c") score++;
-  if (form.q2.value === "c") score++;
-  if (form.q3.value === "d") score++;
-  if (form.q4.value === "b") score++;
-  if (form.q5.value === "d") score++;
-  if (form.q6.value === "a") score++;
-  if (form.q7.value === "c") score++;
-  if (form.q8.value === "c") score++;
-  if (form.q9.value === "a") score++;
-  if (form.q10.value === "b") score++;
-
-  let resultHTML = "<p>" + userName + ", you scored " + score + "/10.</p>";
-
-  if (score >= 5) {
-    resultHTML += "<p style='color: green;'>Congratulations! You passed.</p>";
-  } else {
-    resultHTML += "<p style='color: red;'>Sorry, you did not pass.</p>";
-  }
-
-  resultHTML += "<p><strong>Correct Answers:</strong><br>";
-  resultHTML += "1. Ottawa<br>";
-  resultHTML += "2. 1912<br>";
-  resultHTML += "3. Antarctic Desert<br>";
-  resultHTML += "4. Yen<br>";
-  resultHTML += "5. 32<br>";
-  resultHTML += "6. 206<br>";
-  resultHTML += "7. Portuguese<br>";
-  resultHTML += "8. Diamond<br>";
-  resultHTML += "9. 1945<br>";
-  resultHTML += "10. 3<br>";
-  resultHTML += "</p>";
-
-  document.getElementById("result").innerHTML = resultHTML;
-  return false;
-}
-</script>
 
 </body>
 </html>
