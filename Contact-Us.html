@@ -2,94 +2,110 @@
 <html>
 <head>
 <style>
+   /* Center the body and limit its width for readability */
    body {
-   margin:0 auto;
-   max-width: 1000px;
+     margin: 0 auto; /* Remove default margin and center horizontally */
+     max-width: 1000px; /* Maximum width of the page */
    }
+
+   /* Style the main heading */
    h1 {
-   text-align: center;
+     text-align: center; /* Center the heading */
    }
+
+   /* Style for label sections */
    .label1 {
-   margin-top: 20px;
-   margin-left: 40px;
-   font-size: 22px;
+     margin-top: 20px; /* Space above each label */
+     margin-left: 40px; /* Indent from the left */
+     font-size: 22px; /* Font size for labels */
    }
 
+   /* Style for input fields */
    .finput {
-   display: flex;
-   flex-direction: row;
-   justify-content: flex-start;
-   align-items: center;
-   margin: 10px;
-   width: 400px;
-   height: 18px;
+     display: flex; /* Use flex layout */
+     flex-direction: row; /* Arrange items in a row */
+     justify-content: flex-start; /* Align to the start */
+     align-items: center; /* Align items vertically */
+     margin: 10px; /* Margin around input */
+     width: 400px; /* Width of input field */
+     height: 18px; /* Height of input field */
    }
+
+   /* Style for submit button */
    .sbmt {
-   display: flex;
-   margin-top: 100px;
-   margin-left: 40px;
-   height: 30px;
-   font-size: 22px;
+     display: flex;
+     margin-top: 100px; /* Space from top */
+     margin-left: 40px; /* Indent from left */
+     height: 30px; /* Height of button */
+     font-size: 22px; /* Font size */
    }
+
+   /* Style for clear/reset button */
    .clr {
-   display: flex;
-   margin-top: -30px;
-   margin-left: 700px;
-   height: 30px;
-   font-size: 22px;
+     display: flex;
+     margin-top: -30px; /* Pull up the button */
+     margin-left: 700px; /* Position it to the right */
+     height: 30px;
+     font-size: 22px;
    }
+
+   /* Style for displaying validation error messages */
    #error {
-   color: red;
-   margin-left: 40px;
-   font-size: 18px;
+     color: red; /* Red text color */
+     margin-left: 40px; /* Align with labels */
+     font-size: 18px;
    }
 
+   /* Style for the thank you message */
    #thankyouMessage {
-   margin-top: 20px;
-   font-size: 24px;
-   color: green;
-   text-align: center;
+     margin-top: 20px;
+     font-size: 24px; /* Larger font size */
+     color: green; /* Green text color */
+     text-align: center;
    }
 
+   /* Responsive styling for smaller screens */
    @media only screen and (max-width: 768px) {
-    body {
-        padding: 10px;
-        max-width: 100%;
-    }
+     body {
+       padding: 10px;
+       max-width: 100%; /* Allow full width on small screens */
+     }
 
-    .label1 {
-        margin-left: 10px;
-        font-size: 18px;
-    }
+     .label1 {
+       margin-left: 10px;
+       font-size: 18px;
+     }
 
-    .finput {
-        flex-direction: column;
-        width: 100%;
-        margin: 5px 0;
-    }
+     .finput {
+       flex-direction: column; /* Stack elements vertically */
+       width: 100%;
+       margin: 5px 0;
+     }
 
-    textarea {
-        width: 100% !important;
-    }
+     textarea {
+       width: 100% !important; /* Make textarea full width */
+     }
 
-    .sbmt, .clr {
-        margin-left: 10px;
-        margin-top: 20px;
-        width: 100%;
-        justify-content: center;
-    }
+     .sbmt, .clr {
+       margin-left: 10px;
+       margin-top: 20px;
+       width: 100%;
+       justify-content: center; /* Center buttons */
+     }
 
-    .clr {
-        margin-top: 10px;
-    }
-}
+     .clr {
+       margin-top: 10px; /* Adjust margin */
+     }
+   }
 </style>
 </head>
 
 <body>
 
 <script>
+// Function to validate form submission
 function validateForm() {
+    // Get trimmed values from form inputs
     var name = document.forms["myForm"]["name"].value.trim();
     var phone = document.forms["myForm"]["Phone"].value.trim();
     var email = document.forms["myForm"]["Email"].value.trim();
@@ -100,10 +116,12 @@ function validateForm() {
     let methodUsed = "";
     let contactInfo = "";
 
+    // Validate name
     if (name === "") {
         errorMsg += "Name must be filled out.<br>";
     }
 
+    // Check preferred contact method and validate required info
     if (contactMethod === "Phone") {
         if (phone === "") {
             errorMsg += "Phone number is required as contact method is Phone.<br>";
@@ -137,16 +155,18 @@ function validateForm() {
         }
     }
 
+    // If there's any error, show error and prevent form submission
     if (errorMsg) {
         errorDiv.innerHTML = errorMsg;
         return false;
     }
 
-    // Display the Thank You message
+    // Display thank-you message with contact info
     var thankYouMessage = document.getElementById("thankyouMessage");
-    thankYouMessage.innerHTML = "Thank you for your submission, " + name + "! We will contact you via " + methodUsed + " (" + contactInfo + ").";
+    thankYouMessage.innerHTML = "Thank you for your submission, " + name +
+        "! We will contact you via " + methodUsed + " (" + contactInfo + ").";
 
-    // Hide the form after submission
+    // Reset form and prevent actual form submission
     document.forms["myForm"].reset();
     return false;
 }
@@ -155,47 +175,56 @@ function validateForm() {
 <h1><Font size="20">Please Fill the Information Below</Font></h1>
 
 <form name="myForm" onsubmit="return validateForm();">
-
 <fieldset style="border-width:5px;"><legend style="font-size: 24px;">Contact Us form</legend>
 
+<!-- Name Input -->
 <div class="label1">
 <label> Name: &nbsp &nbsp &nbsp &nbsp &nbsp<input type="text" name="name" class="finput">
 </div>
 
+<!-- Email Input -->
 <div class="label1">
 <label>Email:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="Email" name="Email" class="finput">
 </div>
 
+<!-- Phone Input -->
 <div class="label1">
 <label>Phone Number: &nbsp &nbsp<input type="text" name="Phone" class="finput">
 </div>
 
+<!-- Date Input -->
 <div class="label1">
 <label>Date of Birth: &nbsp<input type="date" name="Date" class="finput">
 </div>
 
+<!-- Address Textarea -->
 <div class="label1">
 <label>Enter your address:</label><br>
 <textarea name="add" style="width: 400px; height: 150px; resize: none;" maxlength=100 class="finput"> </textarea><br>
 </div>
 
+<!-- Gender Selection -->
 <div class="label1">
 Select your gender: <input type="radio" name="gender" value="male" checked>Male
 <input type="radio" name="gender" value="female">Female<br><br>
 </div>
 
+<!-- Preferred Contact Method -->
 <div class="label1">
 Preferred contact method: <input type="radio" name="conmet" value="Phone" checked>Phone
 <input type="radio" name="conmet" value="Email">Email
 <input type="radio" name="conmet" value="Any">Any
 </div>
 
+<!-- Error Message Container -->
 <div id="error"></div>
 
+<!-- Submit Button -->
 <div class="sbmt">
 <INPUT type="SUBMIT" value="SUBMIT">
 </div>
 
+<!-- Clear Button -->
 <div class="clr">
 <INPUT type="RESET" value="CLEAR">
 </div>
@@ -203,7 +232,8 @@ Preferred contact method: <input type="radio" name="conmet" value="Phone" checke
 </fieldset>
 </form>
 <br><br><br>
-<!-- Thank You message will be displayed here -->
+
+<!-- Thank You Message Container -->
 <div id="thankyouMessage"></div><br><br><br><br>
 
 </body>
