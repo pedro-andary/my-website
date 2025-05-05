@@ -2,45 +2,47 @@
 <html>
 <head>
 <style>
-   /* Center the body and limit its width for readability */
+  
+    
    body {
-     margin: 0 auto; /* Remove default margin and center horizontally */
-     max-width: 1000px; /* Maximum width of the page */
+     margin: 0 auto;  
+     max-width: 1000px;  
    }
 
-   /* Style the main heading */
+   
+   
    h1 {
-     text-align: center; /* Center the heading */
+     text-align: center; 
    }
 
-   /* Style for label sections */
+   
    .label1 {
-     margin-top: 20px; /* Space above each label */
-     margin-left: 40px; /* Indent from the left */
-     font-size: 22px; /* Font size for labels */
+     margin-top: 20px; 
+     margin-left: 40px; 
+     font-size: 22px; 
    }
 
-   /* Style for input fields */
+   
    .finput {
-     display: flex; /* Use flex layout */
-     flex-direction: row; /* Arrange items in a row */
+     display: flex; 
+     flex-direction: row; 
      justify-content: flex-start; /* Align to the start */
      align-items: center; /* Align items vertically */
-     margin: 10px; /* Margin around input */
-     width: 400px; /* Width of input field */
-     height: 18px; /* Height of input field */
+     margin: 10px; 
+     width: 400px; 
+     height: 18px; 
    }
 
    /* Style for submit button */
    .sbmt {
      display: flex;
-     margin-top: 100px; /* Space from top */
-     margin-left: 40px; /* Indent from left */
+     margin-top: 100px; 
+     margin-left: 40px; 
      height: 30px; /* Height of button */
      font-size: 22px; /* Font size */
    }
 
-   /* Style for clear/reset button */
+   /* Style for clear button */
    .clr {
      display: flex;
      margin-top: -30px; /* Pull up the button */
@@ -49,18 +51,19 @@
      font-size: 22px;
    }
 
-   /* Style for displaying validation error messages */
+   /* Style for  validation error messages */
    #error {
      color: red; /* Red text color */
-     margin-left: 40px; /* Align with labels */
+     margin-left: 40px; 
      font-size: 18px;
    }
 
    /* Style for the thank you message */
    #thankyouMessage {
      margin-top: 20px;
-     font-size: 24px; /* Larger font size */
-     color: green; /* Green text color */
+	 font-weight: bold;
+     font-size: 24px; 
+     color: green; 
      text-align: center;
    }
 
@@ -77,7 +80,7 @@
      }
 
      .finput {
-       flex-direction: column; /* Stack elements vertically */
+       flex-direction: column;
        width: 100%;
        margin: 5px 0;
      }
@@ -94,7 +97,7 @@
      }
 
      .clr {
-       margin-top: 10px; /* Adjust margin */
+       margin-top: 10px; 
      }
    }
 </style>
@@ -106,10 +109,10 @@
 // Function to validate form submission
 function validateForm() {
     // Get trimmed values from form inputs
-    var name = document.forms["myForm"]["name"].value.trim();
-    var phone = document.forms["myForm"]["Phone"].value.trim();
-    var email = document.forms["myForm"]["Email"].value.trim();
-    var contactMethod = document.forms["myForm"]["conmet"].value;
+    var name = document.forms["myForm"]["name"].value.trim(); //gets the value the user typed in the field named "name"
+    var phone = document.forms["myForm"]["Phone"].value.trim(); //gets the value the user typed in the field named "Phone"
+    var email = document.forms["myForm"]["Email"].value.trim(); //gets the value the user typed in the field named "Email"
+    var contactMethod = document.forms["myForm"]["conmet"].value; //gets the value the user typed in the field named "conmet"
     var errorDiv = document.getElementById("error");
 
     let errorMsg = "";
@@ -145,7 +148,8 @@ function validateForm() {
             errorMsg += "Please provide at least Phone or Email for 'Any' contact method.<br>";
         } else if (phone !== "" && email !== "") {
             methodUsed = "Phone or Email";
-            contactInfo = `${phone} or ${email}`;
+            contactInfo =  phone + " or " + email;
+
         } else if (phone !== "") {
             methodUsed = "Phone";
             contactInfo = phone;
@@ -155,9 +159,10 @@ function validateForm() {
         }
     }
 
-    // If there's any error, show error and prevent form submission
+    // If there is any error, show error and prevent form submission
     if (errorMsg) {
-        errorDiv.innerHTML = errorMsg;
+        errorDiv.innerHTML = errorMsg; //This takes the text stored in errorMsg and inserts it into the HTML element with the ID error 
+		                                           // which is stored in the variable errorDiv.
         return false;
     }
 
@@ -213,7 +218,7 @@ Select your gender: <input type="radio" name="gender" value="male" checked>Male
 <div class="label1">
 Preferred contact method: <input type="radio" name="conmet" value="Phone" checked>Phone
 <input type="radio" name="conmet" value="Email">Email
-<input type="radio" name="conmet" value="Any">Any
+<input type="radio" name="conmet" value="Any">Any <!-- same name because only one is allowed and the selected one will be submitted-->
 </div>
 
 <!-- Error Message Container -->
